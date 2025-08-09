@@ -290,7 +290,7 @@ public class GetFilePathFromUri {
     }
 
 
-    private static int copyStream(InputStream input, OutputStream output){
+    public static int copyStream(InputStream input, OutputStream output){ // <<<--- 这里被修改：private 修改为 public
         final int BUFFER_SIZE = 1024 * 2;
         byte[] buffer = new byte[BUFFER_SIZE];
         BufferedInputStream in = new BufferedInputStream(input, BUFFER_SIZE);
