@@ -3,7 +3,7 @@ name: Android CI Build (with Wrapper Generation)
 
 on:
   push:
-    branches: [ "main", "master" ]
+    branches: [ "main", "master","tym2008-patch-Android9" ]
   workflow_dispatch:
 
 jobs:
