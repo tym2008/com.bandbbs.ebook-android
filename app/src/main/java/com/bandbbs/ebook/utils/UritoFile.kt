@@ -3,8 +3,6 @@ package com.bandbbs.ebook.utils
 import android.content.ContentResolver
 import android.content.Context
 import android.net.Uri
-import android.os.Build
-import android.os.FileUtils
 import android.provider.OpenableColumns
 import android.webkit.MimeTypeMap
 import java.io.File
@@ -37,9 +35,13 @@ fun UritoFile(uri: Uri?, context: Context): File? {
             val `is`: InputStream = contentResolver.openInputStream(uri)!!
             val cache = File(context.cacheDir.absolutePath, displayName)
             val fos = FileOutputStream(cache)
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
-                FileUtils.copy(`is`, fos)
-            }
+            // ▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼
+            // 修改部分：
+            // 移除了只在API 29+才执行的 if 判断，
+            // 并调用 GetFilePathFromUri 中公开的 copyStream 方法来复制文件内容
+            GetFilePathFromUri.copyStream(`is`, fos)
+            // ▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲
+
             file = cache
             fos.close()
             `is`.close()
