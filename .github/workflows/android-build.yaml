@@ -1,13 +1,7 @@
 # 工作流的名称
 name: Android CI Build
 
-# 触发工作流的事件
-on:
-  # 当有代码推送到 main 或 master 分支时触发
-  push:
-    branches: [ "main", "master" ]
-  # 允许你手动在 GitHub 网站的 Actions 页面触发此工作流
-  workflow_dispatch:
+
 
 # 定义工作任务
 jobs:
