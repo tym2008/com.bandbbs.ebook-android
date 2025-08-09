@@ -14,7 +14,7 @@ android {
 
     defaultConfig {
         applicationId = "com.bandbbs.ebook"
-        minSdk = 29
+        minSdk = 25
         targetSdk = 35
         versionCode = 3
         versionName = "3.0.25.5.27.DEV"
