@@ -21,7 +21,22 @@ jobs:
         with:
           java-version: '17'
           distribution: 'temurin'
+          
+      - name: Create Dummy Keystore Files
+        run: |
+          echo "storePassword=dummy_password" > keystore.properties
+          echo "keyAlias=dummy_alias" >> keystore.properties
+          echo "keyPassword=dummy_password" >> keystore.properties
+          
+          keytool -genkey -v \
+            -keystore watchface.keystore \
+            -alias dummy_alias \
+            -keyalg RSA -keysize 2048 -validity 10000 \
+            -storepass dummy_password \
+            -keypass dummy_password \
+            -dname "CN=Debug, OU=Debug, O=Debug, L=Debug, S=Debug, C=US"
 
+            
       # --- 这是新增的核心步骤 ---
       # 第3步：安装一个特定版本的 Gradle
       # 我们需要先读取项目希望使用的 Gradle 版本
