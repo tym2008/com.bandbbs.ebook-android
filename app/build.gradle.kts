@@ -10,7 +10,7 @@ plugins {
 
 android {
     namespace = "com.bandbbs.ebook"
-    compileSdk = 29
+    compileSdk = 34
 
     defaultConfig {
         applicationId = "com.bandbbs.ebook"
